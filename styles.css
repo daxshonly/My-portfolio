@@ -235,6 +235,23 @@ a { color: var(--text); }
 .edu-degree { font-size: 12px; color: var(--muted); }
 .edu-dates { font-size: 11px; color: var(--muted); white-space: nowrap; flex-shrink: 0; }
 
+/* moved from inline styles in index.html */
+.hero-title { margin-top: 12px; }
+.section-heading { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+
+/* background helpers */
+.bg-dark { background: #1a1a2e; }
+.bg-navy { background: #003865; }
+.bg-lime { background: #00c4a7; }
+
+/* padding helpers used for moved inline styles */
+.pad-2 { padding: 2px !important; }
+.pad-4 { padding: 4px !important; }
+.pad-6 { padding: 6px !important; }
+
+/* image filter helper */
+.bright-10 { filter: brightness(10); }
+
 /* ── SKILLS ── */
 .skills-wrap { display: flex; flex-wrap: wrap; gap: 6px; }
 
@@ -246,6 +263,12 @@ a { color: var(--text); }
 }
 
 .skill-badge:hover { background: var(--border); }
+
+.skill-badge .skill-logo {
+  width: 16px; height: 16px; object-fit: contain;
+  vertical-align: middle; margin-right: 8px; display: inline-block;
+  border-radius: 3px;
+}
 
 /* ── PROJECTS ── */
 .projects-subtitle { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
