@@ -246,7 +246,10 @@
     <!-- <p class="contact-text">Email</p> -->
     
 
-    <form id="contactForm" class="contact-form" novalidate>
+    <form id="contactForm" class="contact-form" novalidate action="https://formsubmit.co/darshan.built@gmail.com" method="POST">
+      <!-- Using formsubmit.co to forward submissions to darshan.built@gmail.com -->
+      <input type="hidden" name="_subject" value="New contact from portfolio" />
+      <input type="hidden" name="_captcha" value="false" />
       <label for="contactEmail" class="contact-label">Email</label>
       <input id="contactEmail" name="email" type="email" class="contact-input" placeholder="you@domain.com" required />
 

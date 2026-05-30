@@ -52,14 +52,8 @@ if (contactForm) {
       return;
     }
 
-    // Simulate send --- there is no server-side endpoint in this static site.
+    // Let the browser submit the form to formsubmit.co (action set in HTML)
     statusEl.textContent = 'Sending...';
-
-    setTimeout(() => {
-      statusEl.textContent = 'Thanks — I will reply soon!';
-      statusEl.classList.remove('error');
-      statusEl.classList.add('success');
-      contactForm.reset();
-    }, 800);
+    contactForm.submit();
   });
 }
