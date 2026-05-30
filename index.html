@@ -332,6 +332,19 @@
     <p class="projects-subtitle">I've worked on a variety of projects, from simple websites to complex web applications. Here are a few of my favorites.</p>
     <div class="projects-grid">
 
+      <!-- Blog editor: create posts with optional cover image -->
+      <div class="blog-editor" style="width:100%; margin-bottom:18px;">
+        <div style="font-weight:600; margin-bottom:8px;">Create Blog Post</div>
+        <input id="postTitle" placeholder="Title" style="width:100%; padding:8px; margin-bottom:8px;" />
+        <textarea id="postContent" placeholder="Write your post (Markdown/HTML)" style="width:100%; padding:8px; height:140px; margin-bottom:8px;"></textarea>
+        <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;">
+          <input id="postCover" type="file" accept="image/*" />
+          <label style="font-size:13px;"><input id="postPublish" type="checkbox" style="margin-right:6px;" /> Publish</label>
+          <button id="postSubmit" style="margin-left:auto; padding:8px 12px;">Create Post</button>
+        </div>
+        <div id="postStatus" style="font-size:13px; color:#666;"></div>
+      </div>
+
       <div class="project-card">
         <div class="project-media">
           <video autoplay muted loop playsinline src="https://pub-83c5db439b40468498f97946200806f7.r2.dev/chat-collect.mp4"></video>
@@ -428,6 +441,11 @@
   <a href="#contact">Contact</a>
   <button class="nav-theme" id="themeToggle" title="Toggle theme">🌙</button>
 </nav>
+<!-- floating upload removed (editor now in Blogs section) -->
+
+<script src="https://cdn.jsdelivr.net/npm/appwrite"></script>
+<script src="appwrite/config.js"></script>
+<script src="appwrite/storage.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
