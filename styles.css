@@ -188,37 +188,7 @@ section { margin-top: 48px; }
 p { color: var(--muted); font-size: 14px; line-height: 1.7; }
 a { color: var(--text); }
 
-/* ── WORK EXPERIENCE ── */
-/* .work-list { display: flex; flex-direction: column; gap: 0; }
-
-.work-item {
-  display: flex; align-items: center; gap: 12px;
-  padding: 10px 12px; border-radius: 8px;
-  transition: background 0.15s;
-  cursor: default;
-}
-
-.work-item:hover { background: var(--surface); }
-
-.work-logo {
-  width: 36px; height: 36px; border-radius: 8px;
-  background: var(--surface); border: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 10px; font-weight: 700; flex-shrink: 0;
-  overflow: hidden;
-}
-
-.work-logo img { width: 100%; height: 100%; object-fit: contain; }
-
-.work-info { flex: 1; min-width: 0; }
-.work-company { font-size: 13px; font-weight: 500; }
-.work-role { font-size: 12px; color: var(--muted); }
-.work-dates { font-size: 11px; color: var(--muted); white-space: nowrap; flex-shrink: 0; }
-
-.work-badge {
-  font-size: 10px; background: var(--badge-bg); color: var(--badge-text);
-  border-radius: 9999px; padding: 2px 8px; white-space: nowrap; flex-shrink: 0;
-} */
+/* WORK EXPERIENCE styles removed (unused) */
 
 /* ── EDUCATION ── */
 .edu-list { display: flex; flex-direction: column; gap: 0; }
@@ -268,12 +238,9 @@ a { color: var(--text); }
 /* background helpers */
 .bg-dark { background: #1a1a2e; }
 .bg-navy { background: #003865; }
-.bg-lime { background: #00c4a7; }
 
 /* padding helpers used for moved inline styles */
-.pad-2 { padding: 2px !important; }
 .pad-4 { padding: 4px !important; }
-.pad-6 { padding: 6px !important; }
 
 /* image filter helper */
 .bright-10 { filter: brightness(10); }
