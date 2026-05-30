@@ -1,6 +1,10 @@
 // ── THEME TOGGLE ──
 const toggle = document.getElementById('themeToggle');
-let dark = true;
+let dark = document.documentElement.classList.contains('dark');
+
+if (toggle) {
+  toggle.textContent = dark ? '☀️' : '🌙';
+}
 
 toggle.addEventListener('click', () => {
   dark = !dark;
@@ -19,63 +23,43 @@ const observer = new IntersectionObserver(entries => {
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-// ── BLOG EDITOR: upload cover image and create `posts` document ──
-const postSubmit = document.getElementById('postSubmit');
-const postTitle = document.getElementById('postTitle');
-const postContent = document.getElementById('postContent');
-const postCover = document.getElementById('postCover');
-const postPublish = document.getElementById('postPublish');
-const postStatus = document.getElementById('postStatus');
+// ── CONTACT FORM HANDLING ──
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+  const emailInput = document.getElementById('contactEmail');
+  const messageInput = document.getElementById('contactMessage');
+  const statusEl = document.getElementById('contactStatus');
 
-if (postSubmit) {
-  postSubmit.addEventListener('click', async (e) => {
+  function validateEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    postSubmit.disabled = true;
-    if (postStatus) postStatus.textContent = 'Saving...';
+    statusEl.className = 'contact-status';
+    const email = (emailInput.value || '').trim();
+    const message = (messageInput.value || '').trim();
 
-    try {
-      let coverFileId = null;
-      const file = postCover && postCover.files && postCover.files[0];
-      if (file) {
-        if (postStatus) postStatus.textContent = 'Uploading cover image...';
-        const res = await window.AppwriteStorageHelper.uploadImage(file);
-        coverFileId = res.$id;
-      }
-
-      const titleVal = (postTitle && postTitle.value) || 'Untitled';
-      const contentVal = (postContent && postContent.value) || '';
-      const slug = titleVal.toLowerCase().trim().replace(/\s+/g, '-').replace(/[^a-z0-9\-]/g, '');
-
-      const doc = {
-        title: titleVal,
-        slug,
-        content: contentVal,
-        excerpt: contentVal.slice(0, 200),
-        authorId: '',
-        published: !!(postPublish && postPublish.checked),
-        publishedAt: (postPublish && postPublish.checked) ? new Date().toISOString() : null,
-        coverFileId: coverFileId || null
-      };
-
-      if (postStatus) postStatus.textContent = 'Creating post...';
-      const resDoc = await window.appwriteDatabases.createDocument(
-        window.BLOG_CONFIG.databaseId,
-        window.BLOG_CONFIG.collectionId,
-        Appwrite.ID.unique(),
-        doc
-      );
-
-      if (postStatus) postStatus.innerHTML = `Post created — ID: ${resDoc.$id}`;
-      // clear form
-      if (postTitle) postTitle.value = '';
-      if (postContent) postContent.value = '';
-      if (postCover) postCover.value = '';
-      if (postPublish) postPublish.checked = false;
-    } catch (err) {
-      console.error('Create post error', err);
-      if (postStatus) postStatus.textContent = 'Error: ' + (err.message || err);
-    } finally {
-      postSubmit.disabled = false;
+    if (!validateEmail(email)) {
+      statusEl.textContent = 'Please enter a valid email address.';
+      statusEl.classList.add('error');
+      return;
     }
+
+    if (!message || message.length < 3) {
+      statusEl.textContent = 'Please enter a short message.';
+      statusEl.classList.add('error');
+      return;
+    }
+
+    // Simulate send --- there is no server-side endpoint in this static site.
+    statusEl.textContent = 'Sending...';
+
+    setTimeout(() => {
+      statusEl.textContent = 'Thanks — I will reply soon!';
+      statusEl.classList.remove('error');
+      statusEl.classList.add('success');
+      contactForm.reset();
+    }, 800);
   });
 }
