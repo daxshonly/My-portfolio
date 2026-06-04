@@ -107,6 +107,29 @@ nav a:hover { background: var(--surface); color: var(--text); }
   padding: 96px 24px 64px;
 }
 
+.hero-header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hero-banner {
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface);
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.18);
+}
+
+.hero-banner img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 5;
+  object-fit: cover;
+  object-position: center;
+}
+
 .hero { display: grid; grid-template-columns: 1fr 116px; align-items: center; gap: 16px; }
 
 .hero-text h1 {
@@ -368,12 +391,14 @@ a { color: var(--text); }
 
 /* Avatar size and alignment fallbacks for smaller screens */
 @media (max-width: 520px) {
+  .hero-banner img { aspect-ratio: 16 / 6; }
   .hero { grid-template-columns: 1fr 96px; gap: 12px; }
   .avatar { width: 96px; height: 96px; transform: translateX(-5px); }
   .hero-text h1 { font-size: clamp(0.95rem, 6vw, 1.6rem); }
 }
 
 @media (max-width: 360px) {
+  .hero-banner img { aspect-ratio: 16 / 7; }
   .hero { grid-template-columns: 1fr 72px; }
   .avatar { width: 72px; height: 72px; transform: translateX(-3px); }
   .hero-text h1 { font-size: clamp(0.9rem, 7.5vw, 1.4rem); }
@@ -381,12 +406,14 @@ a { color: var(--text); }
 
 /* Keep avatar to the right and let the name scale responsively */
 @media (max-width: 520px) {
+  .hero-banner img { aspect-ratio: 16 / 6; }
   .hero { grid-template-columns: 1fr 80px; gap: 12px; }
   .avatar { width: 80px; height: 80px; }
   .hero-text h1 { font-size: clamp(0.95rem, 6vw, 1.6rem); }
 }
 
 @media (max-width: 360px) {
+  .hero-banner img { aspect-ratio: 16 / 7; }
   .hero { grid-template-columns: 1fr 64px; }
   .avatar { width: 64px; height: 64px; }
   .hero-text h1 { font-size: clamp(0.9rem, 7.5vw, 1.4rem); }
